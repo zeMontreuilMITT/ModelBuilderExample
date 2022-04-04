@@ -20,6 +20,16 @@ namespace ModelBuilderDemo.Controllers
             _context = context;
         }
 
+        public async Task<IActionResult> DeleteAllCourse()
+        {
+            foreach(Course course in _context.Course)
+            {
+                _context.Course.Remove(course);
+            }
+
+            return RedirectToAction("Index");
+        }
+
         // GET: Courses
         public async Task<IActionResult> Index()
         {
